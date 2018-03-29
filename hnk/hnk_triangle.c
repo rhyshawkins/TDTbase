@@ -1,0 +1,62 @@
+//
+//    HNK Library : A library for computing combinations of arrangements of
+//    general trees for the Trans-dimensional Tree algorithm. See
+//
+//      R Hawkins and M Sambridge, "Geophysical imaging using trans-dimensional trees",
+//      Geophysical Journal International, 2015, 203:2, 972 - 1000,
+//      https://doi.org/10.1093/gji/ggv326
+//    
+//    Copyright (C) 2014 - 2018 Rhys Hawkins
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+//
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "hnk_triangle.h"
+
+#include "hnk_standard.h"
+
+hnk_t *
+hnk_triangle_create(int ntriangles,
+		    int maxh,
+		    int maxk)
+{
+  hnk_t *h;
+  hnk_t *quad;
+  int i;
+
+  quad = hnk_create_quaternary_tree(maxh - 1, maxk - 1);
+  if (quad == NULL) {
+    return NULL;
+  }
+  
+  h = hnk_create_aggregate_empty(maxh,
+				 maxk,
+				 ntriangles,
+				 ntriangles);
+
+  if (h == NULL) {
+    return NULL;
+  }
+
+  for (i = 0; i < ntriangles; i ++) {
+    if (hnk_aggregate_set_subtree(h, i, quad) < 0) {
+      return NULL;
+    }
+  }
+
+  return h;
+}
