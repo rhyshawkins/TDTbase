@@ -2950,7 +2950,7 @@ double wavetree2d_sub_logpriorprobability(const wavetree2d_sub_t *t,
   int index;
   double value;
   
-  for (d = 0; d <= t->degree_max; d ++) {
+  for (d = 1; d <= t->degree_max; d ++) {
       
     c = multiset_int_double_depth_count(t->S_v, d);
     if (c > 0) {
