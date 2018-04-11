@@ -42,6 +42,7 @@ OBJS = \
 	wavetree_value_proposal_global_gaussian.o \
 	wavetree_value_proposal_depth_gaussian.o \
 	wavetree_value_proposal_depth_cauchy.o \
+	wavetree_value_proposal_depth_gaussian_am.o \
 	wavetree_value_proposal_depth_gaussian_scam.o
 
 SRCS = Makefile \
