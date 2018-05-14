@@ -1,6 +1,7 @@
 
 PHDLIBBASE=..
-INCLUDES = -I$(PHDLIBBASE)/log
+INCLUDES = -I$(PHDLIBBASE)/log \
+	$(shell gsl-config --cflags)
 
 CC ?= gcc
 CFLAGS = -c -g -Wall $(INCLUDES) -fPIC

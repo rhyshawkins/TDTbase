@@ -1,5 +1,5 @@
 
-SUBDIRS = hnk log oset sphericalwavelet tracking wavelet wavetree
+SUBDIRS = log hnk oset sphericalwavelet tracking wavelet wavetree
 
 default : all
 

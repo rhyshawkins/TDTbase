@@ -1,5 +1,6 @@
 
-INCLUDES = -I../log
+INCLUDES = $(shell gsl-config --cflags) \
+	-I../log
 
 CC ?= gcc
 CFLAGS = -c -g -Wall -fPIC $(INCLUDES)

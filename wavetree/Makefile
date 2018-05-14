@@ -1,7 +1,8 @@
 
 INCLUDES = -I../log \
 	-I../oset \
-	-I../sphericalwavelet
+	-I../sphericalwavelet \
+	$(shell gsl-config --cflags)
 
 CC ?= gcc
 CFLAGS = -c -g -Wall -fPIC $(INCLUDES)
