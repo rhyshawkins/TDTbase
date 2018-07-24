@@ -3004,3 +3004,45 @@ double wavetree2d_sub_logpriorprobability(const wavetree2d_sub_t *t,
 
   return logprior;
 }
+
+double wavetree2d_sub_mean_abs_deviation(const wavetree2d_sub_t *t)
+{
+  int ii;
+  int jj;
+  int d;
+  int c;
+  int i;
+  int index;
+  double value;
+
+  double mad = 0.0;
+  double delta;
+  int meann = 0;
+  
+  for (d = 1; d <= t->degree_max; d ++) {
+      
+    c = multiset_int_double_depth_count(t->S_v, d);
+    
+    if (c > 0) {
+      
+      for (i = 0; i < c; i ++) {
+	
+	if (multiset_int_double_nth_element(t->S_v, d, i, &index, &value) < 0) {
+	  ERROR("failed to get nth element");
+	  return -1;
+	}
+
+	if (wavetree2d_sub_2dindices(t, index, &ii, &jj) < 0) {
+	  ERROR("failed to get 2d indices");
+	  return -1;
+	}
+
+	meann ++;
+	delta = fabs(value) - mad;
+	mad += delta/(double)meann;
+      }
+    }
+  }
+
+  return mad;
+}

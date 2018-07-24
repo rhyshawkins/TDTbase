@@ -300,6 +300,7 @@ int wavetree2d_sub_get_coeff(const wavetree2d_sub_t *t,
 double wavetree2d_sub_logpriorprobability(const wavetree2d_sub_t *t,
 					  wavetree_pp_t *pp);
 					  
+double wavetree2d_sub_mean_abs_deviation(const wavetree2d_sub_t *t);
 
 /*
  * Internal functions exposed for testing
