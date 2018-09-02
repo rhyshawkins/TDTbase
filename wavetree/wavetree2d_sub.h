@@ -101,8 +101,8 @@ int wavetree2d_sub_coeff_count_scan(const wavetree2d_sub_t *t);
 int wavetree2d_sub_coeff_count_set(const wavetree2d_sub_t *t);
 
 int wavetree2d_sub_map_to_array(const wavetree2d_sub_t *t, 
-			    double *a, 
-			    int n);
+				double *a, 
+				int n);
 
 int wavetree2d_sub_map_impulse_to_array(const wavetree2d_sub_t *t,
 					int coeff_index,
