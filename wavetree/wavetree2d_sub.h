@@ -30,6 +30,7 @@
 
 #include "coefficient_histogram.h"
 #include "multiset_int_double.h"
+#include "multiset_int.h"
 #include "chain_history.h"
 #include "wavetree.h"
 #include "wavetreepp.h"
@@ -186,6 +187,12 @@ wavetree2d_sub_get_S_v(const wavetree2d_sub_t *t);
 int
 wavetree2d_sub_set_from_S_v(wavetree2d_sub_t *t,
 			    const multiset_int_double_t *S_vp);
+
+const multiset_int_t *
+wavetree2d_sub_get_S_b(const wavetree2d_sub_t *t);
+
+const multiset_int_t *
+wavetree2d_sub_get_S_d(const wavetree2d_sub_t *t);
 
 int
 wavetree2d_sub_get_model(const wavetree2d_sub_t *t,
