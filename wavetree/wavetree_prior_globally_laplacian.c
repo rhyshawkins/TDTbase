@@ -36,7 +36,7 @@
 struct globally_laplacian {
   gsl_rng *rng;
 
-  double b;
+  double *b;
 };
 
 static int
@@ -82,6 +82,7 @@ valid_globally_laplacian(void *user,
 
 static int
 setscale_globally_laplacian(void *user,
+			    int level,
 			    double scale,
 			    double *oldscale);
 
