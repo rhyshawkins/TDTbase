@@ -63,3 +63,37 @@ hnk_s2_icosahedron_create(int maxh,
   return root;
 }
 
+hnk_t *
+hnk_s2_icosahedron_vertex_create(int maxh,
+				 int maxk)
+{
+  /* S2 vertex with icosahedron subdivision:
+   * 
+   * 10 vertices + 2 poles from root
+   * 
+   * Each vertex has 
+   * 
+   */
+
+  hnk_t *h4;
+  hnk_t *root;
+
+  h4 = hnk_create_quaternary_tree(maxh - 1, maxk - 1);
+  if (h4 == NULL) {
+    ERROR("failed to create quaternary subtree");
+    return NULL;
+  }
+
+  root = hnk_create_aggregate(maxh, maxk,
+			      20, 20,
+			      h4, h4, h4, h4, h4,
+			      h4, h4, h4, h4, h4,
+			      h4, h4, h4, h4, h4,
+			      h4, h4, h4, h4, h4);
+  if (root == NULL) {
+    ERROR("failed to create aggregate tree");
+    return NULL;
+  }
+
+  return root;
+}
