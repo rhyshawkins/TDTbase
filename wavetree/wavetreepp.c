@@ -157,6 +157,32 @@ wavetree_pp_load_prior(FILE *fp, unsigned long int seed)
       ERROR("failed to create Depth Uniform prior");
       return NULL;
     }
+
+  /* } else if (strcmp(buffer, "depthlaplacian") == 0) { */
+
+  /*   if (fscanf(fp, "%d\n", &ndepths) != 1) { */
+  /*     ERROR("failed to read n depths for Depth Laplacian"); */
+  /*     return NULL; */
+  /*   } */
+
+  /*   if (ndepths < 0 || ndepths > 16) { */
+  /*     ERROR("invalid ndepths %d", ndepths); */
+  /*     return NULL; */
+  /*   } */
+
+  /*   for (i = 0; i < ndepths; i ++) { */
+  /*     if (fscanf(fp, "%lf\n", &(vmin[i])) != 1) { */
+  /* 	ERROR("failed to read std dev %d", i); */
+  /* 	return NULL; */
+  /*     } */
+  /*   } */
+
+  /*   r = wavetree_prior_create_depth_laplacian(ndepths, vmin, seed); */
+
+  /*   if (r == NULL) { */
+  /*     ERROR("failed to create Depth Uniform prior"); */
+  /*     return NULL; */
+  /*   } */
     
   } else if (strcmp(buffer, "depthgeneralisedgaussian") == 0) {
 

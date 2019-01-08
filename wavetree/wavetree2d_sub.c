@@ -2299,6 +2299,18 @@ wavetree2d_sub_set_from_S_v(wavetree2d_sub_t *t,
   return 0;
 }
 
+const multiset_int_t *
+wavetree2d_sub_get_S_b(const wavetree2d_sub_t *t)
+{
+  return t->S_b;
+}
+
+const multiset_int_t *
+wavetree2d_sub_get_S_d(const wavetree2d_sub_t *t)
+{
+  return t->S_d;
+}
+
 int
 wavetree2d_sub_get_model(const wavetree2d_sub_t *t,
 			 int nmax,

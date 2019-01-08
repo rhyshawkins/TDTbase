@@ -40,22 +40,22 @@ int
 multiset_int_remove(multiset_int_t *s, int index, int depth);
 
 int
-multiset_int_total_count(multiset_int_t *s);
+multiset_int_total_count(const multiset_int_t *s);
 
 int 
-multiset_int_restricted_total_count(multiset_int_t *s, int maxdepth);
+multiset_int_restricted_total_count(const multiset_int_t *s, int maxdepth);
 
 int 
-multiset_int_depth_count(multiset_int_t *s, int depth);
+multiset_int_depth_count(const multiset_int_t *s, int depth);
 
 int
-multiset_int_nonempty_count(multiset_int_t *s, int maxdepth);
+multiset_int_nonempty_count(const multiset_int_t *s, int maxdepth);
 
 int 
-multiset_int_is_element(multiset_int_t *s, int index, int depth);
+multiset_int_is_element(const multiset_int_t *s, int index, int depth);
 
 int
-multiset_int_nth_element(multiset_int_t *s, int depth, int i, int *index);
+multiset_int_nth_element(const multiset_int_t *s, int depth, int i, int *index);
 
 int 
 multiset_int_choose_depth(multiset_int_t *s,

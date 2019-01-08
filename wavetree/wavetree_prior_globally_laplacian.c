@@ -36,6 +36,7 @@
 struct globally_laplacian {
   gsl_rng *rng;
 
+  //  double *b;
   double b;
 };
 
