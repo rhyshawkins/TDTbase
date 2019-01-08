@@ -126,6 +126,66 @@ START_TEST (test_hnk_s2_icosahedron_h1)
 }
 END_TEST
 
+
+START_TEST (test_hnk_s2_vertex_create)
+{
+  hnk_t *t;
+  int i;
+  
+  int kmaxs[] = {1, 13, 43, 163, 643, -1};
+  
+  /*
+   * Icosahedron 
+   */
+  t = hnk_s2_icosahedron_vertex_create(4,
+				       100);
+  ck_assert(t != NULL);
+
+  for (i = 0; i < sizeof(kmaxs)/sizeof(int); i ++) {
+    printf("maxk: %d %d %d\n", i, hnk_get_maxk_at_h(t, i), kmaxs[i]);
+    /* ck_assert(hnk_get_maxk_at_h(s2, i) == kmaxs[i]); */
+  }
+
+  hnk_destroy(t);
+}
+END_TEST
+
+START_TEST (test_hnk_s2_vertex_icosahedron_h1)
+{
+  hnk_t *s2;
+
+  int kmaxs[] = {1, 13, -1};
+  
+  /* Verified by hand (complete) */
+  int hnks1[] = {1, 1, 12, 66, 220, 495, 792, 924, 792, 495, 220, 66, 12, 1, 0};
+
+  int i;
+
+  mpz_t a;
+
+  s2 = hnk_s2_icosahedron_vertex_create(1,   
+					100);
+  ck_assert_ptr_ne(s2, NULL);
+  mpz_init(a);
+  
+  for (i = 0; i < sizeof(kmaxs)/sizeof(int); i ++) {
+    printf("maxk: %d %d %d\n", i, hnk_get_maxk_at_h(s2, i), kmaxs[i]);
+    /* ck_assert(hnk_get_maxk_at_h(s2, i) == kmaxs[i]); */
+  }
+
+  for (i = 0; i < sizeof(hnks1)/sizeof(int); i ++) {
+
+    ck_assert(hnk_get_hnk(s2, 1, i, a) == 0);
+    gmp_printf("hnk1: %d %Zd %d\n", i, a, hnks1[i]);
+    /* ck_assert(mpz_get_ui(a) == hnks1[i]); */
+
+  }
+
+  mpz_clear(a);
+  hnk_destroy(s2);
+}
+END_TEST
+
 Suite *
 hnk_s2_suite (void)
 {
@@ -138,6 +198,10 @@ hnk_s2_suite (void)
   tcase_add_test (tc_core, test_hnk_s2_saveload);
 
   tcase_add_test (tc_core, test_hnk_s2_icosahedron_h1);
+
+  tcase_add_test (tc_core, test_hnk_s2_vertex_create);
+  tcase_add_test (tc_core, test_hnk_s2_vertex_icosahedron_h1);
+  
 
   suite_add_tcase (s, tc_core);
 

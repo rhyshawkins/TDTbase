@@ -32,4 +32,8 @@ hnk_s2_icosahedron_create(int maxh,
 			  int maxk);
 
 
+hnk_t *
+hnk_s2_icosahedron_vertex_create(int maxh,
+				 int maxk);
+
 #endif // hnk_s2_h
